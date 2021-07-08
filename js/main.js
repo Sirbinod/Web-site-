@@ -256,6 +256,34 @@
         },
       ],
     });
+
+    $(".homeScreen").slick({
+      arrows: false,
+      dots: false,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      adaptiveHeight: true,
+      pauseOnFocus: false,
+      autoplaySpeed: 1500,
+      responsive: [
+        {
+          breakpoint: 900,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 800,
+          settings: {
+            arrows: false,
+            dots: true,
+          },
+        },
+      ],
+    });
     $(".project").slick({
       arrows: true,
       dots: false,

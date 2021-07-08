@@ -30,6 +30,7 @@
     <script src="js/modernizr.js"></script>
     <script src="js/pace.min.js"></script>
     <script type="module" src="./src/main.js"></script>
+
     <!-- favicons
     ================================================== -->
     <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -87,24 +88,6 @@
             porro iusto sequi veritatis libero enim. Iusto id suscipit veritatis
             neque reprehenderit.
           </p>
-
-          <ul class="header-nav__social">
-            <li>
-              <a href="#"><i class="fa fa-facebook"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-instagram"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-behance"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-dribbble"></i></a>
-            </li>
-          </ul>
         </div>
         <!-- end header-nav__content -->
       </nav>
@@ -119,27 +102,37 @@
 
     <!-- home section
     ================================================== -->
-    <section
-      id="home"
-      class="s-home target-section"
-      data-parallax="scroll"
-      data-image-src="images/hero-bg.jpeg"
-      data-natural-width="3000"
-      data-natural-height="2000"
-      data-position-y="center"
-    >
-      <div class="overlay"></div>
-      <div class="shadow-overlay"></div>
+    <section>
+      <div
+        id="home"
+        class="s-home target-section"
+        data-parallax="scroll"
+        data-natural-width="3000"
+        data-natural-height="2000"
+        data-position-y="center"
+      >
+        <!-- <img class="bg_image" src="images/hero-bg.jpeg" alt="" /> -->
+        <ul class="slideshow">
+          <li><span>Image 01</span></li>
+          <li><span>Image 02</span></li>
+          <li><span>Image 03</span></li>
+          <li><span>Image 04</span></li>
+          <li><span>Image 05</span></li>
+          <li><span>Image 06</span></li>
+        </ul>
 
-      <div class="home-content">
-        <div class="row home-content__main">
-          <h3>Welcome to hell</h3>
+        <div class="overlay"></div>
+        <div class="shadow-overlay"></div>
+        <div class="home-content">
+          <div class="row home-content__main">
+            <h3>Welcome to hell</h3>
 
-          <h1>
-            We are a creative group <br />
-            of people who Architecture design and Construction field
-            experiences.
-          </h1>
+            <h1>
+              We are a creative group <br />
+              of people who Architecture design and Construction field
+              experiences.
+            </h1>
+          </div>
         </div>
 
         <div class="home-content__scroll">
@@ -151,41 +144,8 @@
         <div class="home-content__line"></div>
       </div>
       <!-- end home-content -->
-
-      <ul class="home-social">
-        <li>
-          <a href="#0"
-            ><i class="fa fa-facebook" aria-hidden="true"></i
-            ><span>Facebook</span></a
-          >
-        </li>
-        <li>
-          <a href="#0"
-            ><i class="fa fa-twitter" aria-hidden="true"></i
-            ><span>Twiiter</span></a
-          >
-        </li>
-        <li>
-          <a href="#0"
-            ><i class="fa fa-instagram" aria-hidden="true"></i
-            ><span>Instagram</span></a
-          >
-        </li>
-        <li>
-          <a href="#0"
-            ><i class="fa fa-behance" aria-hidden="true"></i
-            ><span>Behance</span></a
-          >
-        </li>
-        <li>
-          <a href="#0"
-            ><i class="fa fa-dribbble" aria-hidden="true"></i
-            ><span>Dribbble</span></a
-          >
-        </li>
-      </ul>
-      <!-- end home-social -->
     </section>
+
     <!-- end s-home -->
 
     <!-- about section
@@ -193,28 +153,20 @@
     <section id="about" class="s-about">
       <div class="row section-header has-bottom-sep" data-aos="fade-up">
         <div class="col-full">
-          <h3 class="subhead subhead--dark">Hello There</h3>
-          <h1 class="display-1 display-1--light">We Are universe</h1>
+          <h3 class="subhead subhead--dark">About US</h3>
+          <h1 class="display-1 display-1--light" id="title"></h1>
         </div>
       </div>
       <!-- end section-header -->
 
       <div class="row about-desc" data-aos="fade-up">
         <div class="col-full">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt.
-          </p>
+          <p id="body"></p>
         </div>
       </div>
       <!-- end about-desc -->
 
-      <div
+      <!-- <div
         class="row about-stats stats block-1-4 block-m-1-2 block-mob-full"
         data-aos="fade-up"
       >
@@ -234,7 +186,7 @@
           <div class="stats__count">56</div>
           <h5>Happy Clients</h5>
         </div>
-      </div>
+      </div> -->
       <!-- end about-stats -->
 
       <div class="about__line"></div>
@@ -247,106 +199,10 @@
       <div class="row section-header has-bottom-sep" data-aos="fade-up">
         <div class="col-full">
           <h3 class="subhead">Architecture & Construction</h3>
+
           <div class="row clients-outer" data-aos="fade-up">
             <div class="col-full">
-              <div class="clients">
-                <label class="dropdown">
-                  <div class="dd-button">Dropdown</div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button">Dropdown</div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button">Dropdown</div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button">Dropdown</div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button">Dropdown</div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button">Dropdown</div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button">Dropdown</div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button">Dropdown</div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-              </div>
+              <div class="clients" id="Pcategory"></div>
               <!-- end clients -->
             </div>
             <!-- end col-full -->
@@ -385,15 +241,7 @@
         </div>
 
         <div class="col-block service-item" data-aos="fade-up">
-          <div class="service-text">
-            <h3 class="h2">Illustration</h3>
-            <p>
-              Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit
-              ipsum laudantium. Quo delectus est. Maiores voluptas ab sit natus
-              veritatis ut. Debitis nulla cumque veritatis. Sunt suscipit
-              voluptas ipsa in tempora esse soluta sint.
-            </p>
-          </div>
+          <div class="service-text" id="contain"></div>
         </div>
       </div>
       <!-- end aArchitecture and Construction-list -->
@@ -408,122 +256,10 @@
           <h3 class="subhead">Visualization</h3>
           <div class="row clients-outer" data-aos="fade-up">
             <div class="col-full">
-              <div class="clients">
-                <label class="dropdown">
-                  <div class="dd-button" style="background-color: #e6e6e6">
-                    Dropdown
-                  </div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu" style="background-color: #e6e6e6">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button" style="background-color: #e6e6e6">
-                    Dropdown
-                  </div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu" style="background-color: #e6e6e6">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button" style="background-color: #e6e6e6">
-                    Dropdown
-                  </div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu" style="background-color: #e6e6e6">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button" style="background-color: #e6e6e6">
-                    Dropdown
-                  </div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu" style="background-color: #e6e6e6">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button" style="background-color: #e6e6e6">
-                    Dropdown
-                  </div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu" style="background-color: #e6e6e6">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button" style="background-color: #e6e6e6">
-                    Dropdown
-                  </div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu" style="background-color: #e6e6e6">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button" style="background-color: #e6e6e6">
-                    Dropdown
-                  </div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu" style="background-color: #e6e6e6">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-                <label class="dropdown">
-                  <div class="dd-button" style="background-color: #e6e6e6">
-                    Dropdown
-                  </div>
-
-                  <input type="checkbox" class="dd-input" id="test" />
-
-                  <ul class="dd-menu" style="background-color: #e6e6e6">
-                    <li>Action</li>
-                    <li>Another action</li>
-                    <li>Something else here</li>
-                    <li class="divider"></li>
-                  </ul>
-                </label>
-              </div>
-              <!-- end clients -->
+              <div class="clients"></div>
+              <!--end clients -->
             </div>
+
             <!-- end col-full -->
           </div>
           <!-- end clients-outer -->
@@ -574,7 +310,8 @@
     <!-- end visualization -->
     <!-- gallery
     ================================================== -->
-    <section id="works" class="s-works">
+
+    <!-- <section id="works" class="s-works">
       <div class="intro-wrap">
         <div
           class="row section-header has-bottom-sep light-sep"
@@ -586,11 +323,11 @@
               We love what we do, check out some of our latest works
             </h1>
           </div>
-        </div>
-        <!-- end section-header -->
-      </div>
-      <!-- end intro-wrap -->
-
+        </div> -->
+    <!-- end section-header -->
+    <!-- </div> -->
+    <!-- end intro-wrap -->
+    <!-- 
       <div class="row works-content">
         <div class="col-full masonry-wrap">
           <div class="masonry">
@@ -620,9 +357,9 @@
                 </div>
               </div>
             </div>
-            <!-- end masonry__brick -->
+             end masonry__brick -->
 
-            <div class="masonry__brick" data-aos="fade-up">
+    <!-- <div class="masonry__brick" data-aos="fade-up">
               <div class="item-folio">
                 <div class="item-folio__thumb">
                   <a
@@ -647,28 +384,29 @@
                   </p>
                 </div>
               </div>
-            </div>
-            <!-- end masonry__brick -->
-          </div>
-          <!-- end masonry -->
-        </div>
-        <!-- end col-full -->
-      </div>
-      <!-- end works-content -->
-    </section>
+            </div> -->
+    <!-- end masonry__brick -->
+    <!-- </div> -->
+    <!-- end masonry -->
+    <!-- </div> -->
+    <!-- end col-full -->
+    <!-- </div> -->
+    <!-- end works-content -->
+    <!-- </section> -->
+
     <!-- end s-works -->
 
     <!--Testimonials
     ================================================== -->
-    <section id="clients" class="s-clients">
+    <!-- <section id="clients" class="s-clients">
       <div class="row section-header" data-aos="fade-up">
         <div class="col-full">
           <h3 class="subhead">testimonials</h3>
           <h1 class="display-2">Hell has been honored to partner</h1>
         </div>
-      </div>
-      <!-- end section-header -->
-
+      </div> -->
+    <!-- end section-header -->
+    <!-- 
       <div class="row clients-testimonials" data-aos="fade-up">
         <div class="col-full">
           <div class="testimonials">
@@ -729,12 +467,12 @@
               </div>
             </div>
           </div>
-          <!-- end testimonials -->
-        </div>
-        <!-- end col-full -->
-      </div>
-      <!-- end client-testimonials -->
-    </section>
+           end testimonials -->
+    <!-- </div> -->
+    <!-- end col-full -->
+    <!-- </div>  -->
+    <!-- end client-testimonials -->
+    <!-- </section> -->
     <!-- end s-clients -->
 
     <!-- contact
@@ -866,29 +604,6 @@
               </p>
             </div>
 
-            <ul class="contact-social">
-              <li>
-                <a href="#"
-                  ><i class="fa fa-facebook" aria-hidden="true"></i
-                ></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-              </li>
-              <li>
-                <a href="#"
-                  ><i class="fa fa-instagram" aria-hidden="true"></i
-                ></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-              </li>
-              <li>
-                <a href="#"
-                  ><i class="fa fa-dribbble" aria-hidden="true"></i
-                ></a>
-              </li>
-            </ul>
             <!-- end contact-social -->
           </div>
           <!-- end contact-info -->
@@ -961,5 +676,89 @@
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      $(function () {
+        var $title = $("#title");
+        var $body = $("#body");
+        $.ajax({
+          type: "GET",
+          url: "http://localhost:8000/about_us/",
+          // headers: "content-type",
+          success: function (title) {
+            console.log("success", title);
+            $.each(title, function (i, tit) {
+              console.log(tit);
+              $title.append(tit.title);
+              $body.append(tit.body);
+            });
+          },
+        });
+      });
+    </script>
+    <div></div>
+    <script>
+      function createButton(category) {
+        let categoryOption = "";
+        let contan = "";
+        category.project_details.forEach((e) => {
+          contan = e;
+
+          console.log(contan, "hohoh");
+          categoryOption += `<a onclick="myContain('${e}')">${e.project_name}</a>`;
+        });
+        return `<div class="dropdown"> <button  class="dropbtn" onclick="myFunction('${category.category_name}')">
+          ${category.category_name}</button>
+          <div id="${category.category_name}" class="dropdown-content"> ${categoryOption}</div>
+                </div>`;
+
+        return;
+      }
+      function myContain(id) {
+        var con = "";
+        var $contain = $("#contain");
+        con = `<h3>${name}</h3>`;
+        $contain.append(con);
+        console.log(ids, "yo k ho");
+      }
+      $(function () {
+        var $Pcategory = $("#Pcategory");
+        var $Psubcategory = $("#Psubcategory");
+        var $myDropdown = $("#myDropdown");
+
+        $.ajax({
+          type: "GET",
+          url: "http://localhost:8000/architecture_and_construction/",
+          success: function (project) {
+            console.log("success project", project);
+            var htmlButton = "";
+            $.each(project, function (i, proj) {
+              htmlButton += createButton(proj);
+            });
+            $Pcategory.append(htmlButton);
+          },
+        });
+      });
+    </script>
+    <script>
+      /* When the user clicks on the button, 
+      toggle between hiding and showing the dropdown content */
+      function myFunction(id) {
+        document.getElementById(id).classList.toggle("show");
+      }
+
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function (event) {
+        if (!event.target.matches(".dropbtn")) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains("show")) {
+              openDropdown.classList.remove("show");
+            }
+          }
+        }
+      };
+    </script>
   </body>
 </html>

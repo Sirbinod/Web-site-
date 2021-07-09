@@ -284,33 +284,8 @@
         },
       ],
     });
-    $(".project").slick({
-      arrows: true,
-      dots: false,
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      adaptiveHeight: true,
-      // autoplay: true,
-      pauseOnFocus: false,
-      responsive: [
-        {
-          breakpoint: 900,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          },
-        },
-        {
-          breakpoint: 800,
-          settings: {
-            arrows: false,
-            dots: true,
-          },
-        },
-      ],
-    });
   };
+  // console.log('#projectImg')
 
   /* Smooth Scrolling
    * ------------------------------------------------------ */

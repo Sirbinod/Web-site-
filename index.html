@@ -196,7 +196,11 @@
     <!-- Architecture and Construction
     ================================================== -->
     <section id="services" class="s-services">
-      <div class="row section-header has-bottom-sep" data-aos="fade-up">
+      <div
+        class="row section-header has-bottom-sep"
+        data-aos="fade-up"
+        style="z-index: 9"
+      >
         <div class="col-full">
           <h3 class="subhead">Architecture & Construction</h3>
 
@@ -215,33 +219,15 @@
       <div class="row services-list block-1-2 block-tab-full">
         <div class="col-block service-item" data-aos="fade-up">
           <div class="project-testimonials" data-aos="fade-up">
-            <div class="project">
-              <div class="card">
-                <img
-                  src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-                  alt="Avatar"
-                />
-              </div>
-              <div class="card">
-                <img
-                src=https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg/>
-              </div>
-              <div class="card">
-                <img
-                  src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-                  alt="Avatar"
-                />
-              </div>
-              <div class="card">
-                <img
-                src=https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg/>
-              </div>
-            </div>
+            <div class="project" id="projectImg"></div>
           </div>
         </div>
 
         <div class="col-block service-item" data-aos="fade-up">
-          <div class="service-text" id="contain"></div>
+          <div class="service-text">
+            <h3 id="containh3"></h3>
+            <p id="containp"></p>
+          </div>
         </div>
       </div>
       <!-- end aArchitecture and Construction-list -->
@@ -616,7 +602,8 @@
 
     <!-- footer
     ================================================== -->
-    <footer>
+    <section class="footer">
+      <div class="overlay"></div>
       <div class="row footer-main">
         <div class="col-six tab-full left footer-desc">
           <!-- here logo -->
@@ -638,7 +625,6 @@
         </div>
       </div>
       <!-- end footer-main -->
-
       <div class="row footer-bottom">
         <div class="col-twelve">
           <div class="copyright">
@@ -654,7 +640,7 @@
         </div>
       </div>
       <!-- end footer-bottom -->
-    </footer>
+    </section>
     <!-- end footer -->
 
     <!-- preloader
@@ -697,6 +683,33 @@
     </script>
     <div></div>
     <script>
+      $("#projectImg").slick({
+        arrows: true,
+        dots: false,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        adaptiveHeight: true,
+        // autoplay: true,
+        pauseOnFocus: false,
+        // responsive: [
+        //   {
+        //     breakpoint: 900,
+        //     settings: {
+        //       slidesToShow: 1,
+        //       slidesToScroll: 1,
+        //     },
+        //   },
+        //   {
+        //     breakpoint: 800,
+        //     settings: {
+        //       arrows: false,
+        //       dots: true,
+        //     },
+        //   },
+        // ],
+      });
+
       function createButton(category) {
         let categoryOption = "";
         let contan = "";
@@ -704,7 +717,11 @@
           contan = e;
 
           console.log(contan, "hohoh");
-          categoryOption += `<a onclick="myContain('${e}')">${e.project_name}</a>`;
+          var obj = JSON.stringify(e);
+          categoryOption +=
+            `<a onclick="myContain(` +
+            obj.replace(/"/g, "&quot;") +
+            `);">${e.project_name}</a>`;
         });
         return `<div class="dropdown"> <button  class="dropbtn" onclick="myFunction('${category.category_name}')">
           ${category.category_name}</button>
@@ -714,11 +731,28 @@
         return;
       }
       function myContain(id) {
-        var con = "";
-        var $contain = $("#contain");
-        con = `<h3>${name}</h3>`;
-        $contain.append(con);
-        console.log(ids, "yo k ho");
+        var $containh3 = $("#containh3");
+        var $containp = $("#containp");
+
+        var $projectImg = $("#projectImg");
+
+        $containh3.text(`${id.project_name}`);
+        $containp.text(` ${id.description}`);
+        let $image = id.project_images;
+        // alert("Here");
+        $("#projectImg").slick("removeSlide", null, null, true);
+        id.project_images.forEach((e) => {
+          $("#projectImg").slick(
+            "slickAdd",
+            `<div class="card"><img src="http://localhost:8000${e}" /></div>`
+          );
+        });
+
+        // $image = $image.map(
+        //   (e) =>
+        //     `<div class="card"><img src="http://localhost:8000${e}" /></div>`
+        // );
+        // $projectImg.appendTo($image);
       }
       $(function () {
         var $Pcategory = $("#Pcategory");
@@ -734,7 +768,17 @@
             $.each(project, function (i, proj) {
               htmlButton += createButton(proj);
             });
+
             $Pcategory.append(htmlButton);
+            $("#containh3").append(project[0].project_details[0].project_name);
+            $("#containp").append(project[0].project_details[0].description);
+
+            project[0].project_details[0].project_images.forEach((e) => {
+              $("#projectImg").slick(
+                "slickAdd",
+                `<div class="card"><img src="http://localhost:8000${e}" /></div>`
+              );
+            });
           },
         });
       });

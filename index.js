@@ -1,8 +1,12 @@
-import * as THREE from "https://threejsfundamentals.org/threejs/resources/threejs/r127/build/three.module.js";
-import {OrbitControls} from "https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/controls/OrbitControls.js";
-import {GLTFLoader} from "https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/loaders/GLTFLoader.js";
+// import * as THREE from "https://threejsfundamentals.org/threejs/resources/threejs/r127/build/three.module.js";
+// import {OrbitControls} from "https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/controls/OrbitControls.js";
+// import {GLTFLoader} from "https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/loaders/GLTFLoader.js";
+const THREE = require("./vendor/three/build/three.module");
+const OrbitControls = require("./vendor/three/examples/jsm/controls/OrbitControls");
+const GLTFLoader = require("./vendor/three/examples/jsm/loaders/GLTFLoader");
 
-function main() {
+function main(id) {
+  console.log(id);
   const canvas = document.querySelector("#c");
   const renderer = new THREE.WebGLRenderer({canvas});
 
@@ -89,7 +93,11 @@ function main() {
   {
     // const url = "./assets/logcabin/scene.gltf";
 
-    const url = "./assets/scene.gltf";
+    // const url = "./assets/scene.gltf";
+    // console.log($("#c"));
+    console.log(document.getElementById("c"));
+    const url = document.getElementById("c").getAttribute("data-id");
+    console.log(`++++++++++++++++++++++++++++${url}`);
 
     const gltfLoader = new GLTFLoader();
     gltfLoader.load(url, (gltf) => {

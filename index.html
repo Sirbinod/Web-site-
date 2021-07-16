@@ -30,6 +30,9 @@
     <script src="js/modernizr.js"></script>
     <script src="js/pace.min.js"></script>
     <script type="module" src="./src/main.js"></script>
+    <script src="./vendor/three/build/three.module.js"></script>
+    <script src="./vendor/three/examples/jsm/controls/OrbitControls.js"></script>
+    <script src="/vendor/three/examples/jsm/loaders/GLTFLoader.js"></script>
 
     <!-- favicons
     ================================================== -->
@@ -242,7 +245,7 @@
           <h3 class="subhead">Visualization</h3>
           <div class="row clients-outer" data-aos="fade-up">
             <div class="col-full">
-              <div class="clients"></div>
+              <div class="clients" id="vcategory"></div>
               <!--end clients -->
             </div>
 
@@ -258,22 +261,9 @@
           <div class="project-testimonials" data-aos="fade-up">
             <div class="project">
               <div class="card">
-                <canvas id="c"></canvas>
-                <script type="module" src="./index.js"></script>
-              </div>
-              <div class="card">
-                <img
-                src=https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg/>
-              </div>
-              <div class="card">
-                <img
-                  src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-                  alt="Avatar"
-                />
-              </div>
-              <div class="card">
-                <img
-                src=https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg/>
+                <!-- <canvas id="c"></canvas> -->
+                <div id="c"></div>
+                <!-- <script type="module" src="./index.js"></script> -->
               </div>
             </div>
           </div>
@@ -281,13 +271,8 @@
 
         <div class="col-block service-item" data-aos="fade-up">
           <div class="service-text">
-            <h3 class="h2">Illustration</h3>
-            <p>
-              Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit
-              ipsum laudantium. Quo delectus est. Maiores voluptas ab sit natus
-              veritatis ut. Debitis nulla cumque veritatis. Sunt suscipit
-              voluptas ipsa in tempora esse soluta sint.
-            </p>
+            <h3 class="h2" id="vcontainh3"></h3>
+            <p id="vcontainp"></p>
           </div>
         </div>
       </div>
@@ -661,7 +646,10 @@
     ================================================== -->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/plugins.js"></script>
+    <script src="./js/aa.js"></script>
     <script src="js/main.js"></script>
+    <script src="./index.js"></script>
+
     <script>
       $(function () {
         var $title = $("#title");
@@ -716,7 +704,6 @@
         category.project_details.forEach((e) => {
           contan = e;
 
-          console.log(contan, "hohoh");
           var obj = JSON.stringify(e);
           categoryOption +=
             `<a onclick="myContain(` +
@@ -763,13 +750,13 @@
           type: "GET",
           url: "http://localhost:8000/architecture_and_construction/",
           success: function (project) {
-            console.log("success project", project);
             var htmlButton = "";
             $.each(project, function (i, proj) {
               htmlButton += createButton(proj);
             });
 
-            $Pcategory.append(htmlButton);
+            // $Pcategory.append(htmlButton);
+            $Pcategory.slick("slickAdd", htmlButton);
             $("#containh3").append(project[0].project_details[0].project_name);
             $("#containp").append(project[0].project_details[0].description);
 
@@ -779,6 +766,117 @@
                 `<div class="card"><img src="http://localhost:8000${e}" /></div>`
               );
             });
+          },
+        });
+      });
+    </script>
+    <script>
+      // $("#projectImg").slick({
+      //   arrows: true,
+      //   dots: false,
+      //   infinite: true,
+      //   slidesToShow: 1,
+      //   slidesToScroll: 1,
+      //   adaptiveHeight: true,
+      //   // autoplay: true,
+      //   pauseOnFocus: false,
+      //   // responsive: [
+      //   //   {
+      //   //     breakpoint: 900,
+      //   //     settings: {
+      //   //       slidesToShow: 1,
+      //   //       slidesToScroll: 1,
+      //   //     },
+      //   //   },
+      //   //   {
+      //   //     breakpoint: 800,
+      //   //     settings: {
+      //   //       arrows: false,
+      //   //       dots: true,
+      //   //     },
+      //   //   },
+      //   // ],
+      // });
+
+      function creatButton(vcategory) {
+        let categoryOption = "";
+        let contan = "";
+        vcategory.v_project_details.forEach((e) => {
+          contan = e;
+
+          var obj = JSON.stringify(e);
+          categoryOption +=
+            `<a onclick="myContain(` +
+            obj.replace(/"/g, "&quot;") +
+            `);">${e.project_name}</a>`;
+        });
+        console.log(vcategory.category_name, "what is here");
+        return `<div class="dropdown"> <button  class="dropbtn" onclick="myFunction('${vcategory.category_name}')">
+                ${vcategory.category_name}</button>
+                <div id="${vcategory.category_name}" class="dropdown-content"> ${categoryOption}</div>
+                      </div>`;
+
+        return;
+      }
+      function myContain(id) {
+        var $vcontainh3 = $("#vcontainh3");
+        var $vcontainp = $("#vcontainp");
+
+        //   var $projectImg = $("#projectImg");
+
+        $vcontainh3.text(`${id.project_name}`);
+        $vcontainp.text(` ${id.description}`);
+
+        //   let $image = id.project_images;
+        alert("Here");
+        $("#projectImg").slick("removeSlide", null, null, true);
+        $("#c").append(main(`http://localhost:8000`));
+        id.project_images.forEach((e) => {
+          // createimage(`}`);
+          // $("#c").attr("data-id", `http://localhost:8000${e}`);
+          // $("#projectImg").slick(
+          //   "slickAdd",
+          //   `<div class="card"><img src="http://localhost:8000${e}" /></div>`
+          // );
+        });
+
+        // $image = $image.map(
+        //   (e) =>
+        //     `<div class="card"><img src="http://localhost:8000${e}" /></div>`
+        // );
+        // $projectImg.appendTo($image);
+      }
+
+      $(function () {
+        var $vcategory = $("#vcategory");
+
+        $.ajax({
+          type: "GET",
+          url: "http://localhost:8000/visualization/",
+          success: function (vproject) {
+            console.log("success project what is the ", vproject);
+            var htmlButton = "";
+            $.each(vproject, function (i, proje) {
+              console.log(proje, "can you say what what.....");
+
+              htmlButton += creatButton(proje);
+            });
+
+            // $Pcategory.append(htmlButton);
+            $vcategory.slick("slickAdd", htmlButton);
+            $("#vcontainh3").append(
+              vproject[0].v_project_details[0].project_name
+            );
+            $("#vcontainp").append(
+              vproject[0].v_project_details[0].description
+            );
+
+            // project[0].project_details[0].project_images.forEach((e) => {
+            //   $("#projectImg").slick(
+            //     "slickAdd",
+            //     `<div class="card"><img src="http://localhost:8000${e}" /></div>`
+            //   );
+            // });
           },
         });
       });
@@ -804,5 +902,7 @@
         }
       };
     </script>
+    <!-- test scripts  -->
+    <script></script>
   </body>
 </html>

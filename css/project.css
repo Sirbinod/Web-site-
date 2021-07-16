@@ -17,11 +17,12 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  width: auto !important;
 }
 
 .dropdown-content {
   display: none;
-  position: absolute;
+  position: relative;
   background-color: #f1f1f1;
   min-width: 160px;
   overflow: auto;
@@ -413,4 +414,10 @@
 /* Show at least something when animations not supported */
 .no-cssanimations .slideshow li span {
   opacity: 1;
+}
+
+/* //custom
+ */
+.slick-track {
+  width: none !important;
 }

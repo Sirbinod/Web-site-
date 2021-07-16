@@ -1223,7 +1223,7 @@ body[data-aos-easing="ease-in-out-quart"] [data-aos] {
   position: relative;
   left: 0;
   top: 0;
-  display: block;
+  display: flex;
 }
 
 .slick-track:before,

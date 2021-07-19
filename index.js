@@ -1,12 +1,11 @@
-// import * as THREE from "https://threejsfundamentals.org/threejs/resources/threejs/r127/build/three.module.js";
-// import {OrbitControls} from "https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/controls/OrbitControls.js";
-// import {GLTFLoader} from "https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/loaders/GLTFLoader.js";
-const THREE = require("./vendor/three/build/three.module");
-const OrbitControls = require("./vendor/three/examples/jsm/controls/OrbitControls");
-const GLTFLoader = require("./vendor/three/examples/jsm/loaders/GLTFLoader");
-
-function main(id) {
-  console.log(id);
+import * as THREE from "https://threejsfundamentals.org/threejs/resources/threejs/r127/build/three.module.js";
+import {OrbitControls} from "https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/controls/OrbitControls.js";
+import {GLTFLoader} from "https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/loaders/GLTFLoader.js";
+// const THREE = require("./vendor/three/build/three.module");
+// const OrbitControls = require("./vendor/three/examples/jsm/controls/OrbitControls");
+// const GLTFLoader = require("./vendor/three/examples/jsm/loaders/GLTFLoader");
+window.main = function (id) {
+  console.log(id, "katiwata data");
   const canvas = document.querySelector("#c");
   const renderer = new THREE.WebGLRenderer({canvas});
 
@@ -94,10 +93,7 @@ function main(id) {
     // const url = "./assets/logcabin/scene.gltf";
 
     // const url = "./assets/scene.gltf";
-    // console.log($("#c"));
-    console.log(document.getElementById("c"));
-    const url = document.getElementById("c").getAttribute("data-id");
-    console.log(`++++++++++++++++++++++++++++${url}`);
+    const url = `http://localhost:8000${id}`;
 
     const gltfLoader = new GLTFLoader();
     gltfLoader.load(url, (gltf) => {
@@ -112,7 +108,7 @@ function main(id) {
       const boxCenter = box.getCenter(new THREE.Vector3());
 
       // set the camera to frame the box
-      frameArea(boxSize * 0.5, boxSize, boxCenter, camera);
+      frameArea(boxSize * 0.9, boxSize, boxCenter, camera);
 
       // update the Trackball controls to handle the new size
       controls.maxDistance = boxSize * 10;
@@ -145,6 +141,6 @@ function main(id) {
   }
 
   requestAnimationFrame(render);
-}
+};
 
 main();

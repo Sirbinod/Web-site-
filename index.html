@@ -31,8 +31,14 @@
     <script src="js/pace.min.js"></script>
     <script type="module" src="./src/main.js"></script>
     <script src="./vendor/three/build/three.module.js"></script>
-    <script src="./vendor/three/examples/jsm/controls/OrbitControls.js"></script>
-    <script src="/vendor/three/examples/jsm/loaders/GLTFLoader.js"></script>
+    <script
+      type="module"
+      src="./vendor/three/examples/jsm/controls/OrbitControls.js"
+    ></script>
+    <script
+      type="module"
+      src="/vendor/three/examples/jsm/loaders/GLTFLoader.js"
+    ></script>
 
     <!-- favicons
     ================================================== -->
@@ -46,7 +52,8 @@
     <header class="s-header">
       <div class="header-logo">
         <a class="site-logo" href="index.html">
-          <img src="images/logo.png" alt="Homepage" />
+          Pashupati Construction
+          <!-- <img src="images/logo.png" alt="Homepage" /> -->
         </a>
       </div>
 
@@ -261,9 +268,7 @@
           <div class="project-testimonials" data-aos="fade-up">
             <div class="project">
               <div class="card">
-                <!-- <canvas id="c"></canvas> -->
-                <div id="c"></div>
-                <!-- <script type="module" src="./index.js"></script> -->
+                <canvas id="c"></canvas>
               </div>
             </div>
           </div>
@@ -592,6 +597,7 @@
       <div class="row footer-main">
         <div class="col-six tab-full left footer-desc">
           <!-- here logo -->
+          <sapn class="logo-footer">Pashupati Construction  </sapn>
           <div class="footer-logo"></div>
           Proin eget tortor risus. Mauris blandit aliquet elit, eget tincidunt
           nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec,
@@ -613,8 +619,8 @@
       <div class="row footer-bottom">
         <div class="col-twelve">
           <div class="copyright">
-            <span>© Copyright HELL 2021</span>
-            <span>Sarbin Shrestha</span>
+            <span>© Copyright 2021</span>
+            <span>Pashupati Construction</span>
           </div>
 
           <div class="go-top">
@@ -648,7 +654,7 @@
     <script src="js/plugins.js"></script>
     <script src="./js/aa.js"></script>
     <script src="js/main.js"></script>
-    <script src="./index.js"></script>
+    <script type="module" src="./index.js"></script>
 
     <script>
       $(function () {
@@ -659,9 +665,7 @@
           url: "http://localhost:8000/about_us/",
           // headers: "content-type",
           success: function (title) {
-            console.log("success", title);
             $.each(title, function (i, tit) {
-              console.log(tit);
               $title.append(tit.title);
               $body.append(tit.body);
             });
@@ -726,12 +730,11 @@
         $containh3.text(`${id.project_name}`);
         $containp.text(` ${id.description}`);
         let $image = id.project_images;
-        // alert("Here");
         $("#projectImg").slick("removeSlide", null, null, true);
         id.project_images.forEach((e) => {
           $("#projectImg").slick(
             "slickAdd",
-            `<div class="card"><img src="http://localhost:8000${e}" /></div>`
+            `<div class="card"><img class="project_img" src="http://localhost:8000${e}" /></div>`
           );
         });
 
@@ -763,7 +766,7 @@
             project[0].project_details[0].project_images.forEach((e) => {
               $("#projectImg").slick(
                 "slickAdd",
-                `<div class="card"><img src="http://localhost:8000${e}" /></div>`
+                `<div class="card"><img class="project_img" src="http://localhost:8000${e}" /></div>`
               );
             });
           },
@@ -806,11 +809,10 @@
 
           var obj = JSON.stringify(e);
           categoryOption +=
-            `<a onclick="myContain(` +
+            `<a onclick="myData(` +
             obj.replace(/"/g, "&quot;") +
             `);">${e.project_name}</a>`;
         });
-        console.log(vcategory.category_name, "what is here");
         return `<div class="dropdown"> <button  class="dropbtn" onclick="myFunction('${vcategory.category_name}')">
                 ${vcategory.category_name}</button>
                 <div id="${vcategory.category_name}" class="dropdown-content"> ${categoryOption}</div>
@@ -818,7 +820,7 @@
 
         return;
       }
-      function myContain(id) {
+      function myData(id) {
         var $vcontainh3 = $("#vcontainh3");
         var $vcontainp = $("#vcontainp");
 
@@ -828,16 +830,18 @@
         $vcontainp.text(` ${id.description}`);
 
         //   let $image = id.project_images;
-        alert("Here");
         $("#projectImg").slick("removeSlide", null, null, true);
-        $("#c").append(main(`http://localhost:8000`));
+
         id.project_images.forEach((e) => {
+          console.log(e);
           // createimage(`}`);
           // $("#c").attr("data-id", `http://localhost:8000${e}`);
-          // $("#projectImg").slick(
-          //   "slickAdd",
-          //   `<div class="card"><img src="http://localhost:8000${e}" /></div>`
-          // );
+          $(".c").slick(
+            "slickAdd",
+            window.main(e)
+
+            //   `<div class="card"><img src="http://localhost:8000${e}" /></div>`
+          );
         });
 
         // $image = $image.map(
@@ -854,11 +858,8 @@
           type: "GET",
           url: "http://localhost:8000/visualization/",
           success: function (vproject) {
-            console.log("success project what is the ", vproject);
             var htmlButton = "";
             $.each(vproject, function (i, proje) {
-              console.log(proje, "can you say what what.....");
-
               htmlButton += creatButton(proje);
             });
 
@@ -871,12 +872,13 @@
               vproject[0].v_project_details[0].description
             );
 
-            // project[0].project_details[0].project_images.forEach((e) => {
-            //   $("#projectImg").slick(
-            //     "slickAdd",
-            //     `<div class="card"><img src="http://localhost:8000${e}" /></div>`
-            //   );
-            // });
+            vproject[0].v_project_details[0].project_images.forEach((e) => {
+              // $("").slick(
+              //   "slickAdd",
+              //   `<div class="card"><img src="http://localhost:8000${e}" /></div>`
+              // );
+              window.main(e);
+            });
           },
         });
       });
@@ -902,7 +904,5 @@
         }
       };
     </script>
-    <!-- test scripts  -->
-    <script></script>
   </body>
 </html>

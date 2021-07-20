@@ -343,25 +343,22 @@
 
         $.ajax({
           type: "POST",
-          url: "inc/sendEmail.php",
+          url: "http://localhost:8000/contact_us/",
           data: $(form).serialize(),
+
           beforeSend: function () {
             sLoader.slideDown("slow");
           },
           success: function (msg) {
             // Message was sent
-            if (msg == "OK") {
-              sLoader.slideUp("slow");
-              $(".message-warning").fadeOut();
-              $("#contactForm").fadeOut();
-              $(".message-success").fadeIn();
-            }
-            // There was an error
-            else {
-              sLoader.slideUp("slow");
-              $(".message-warning").html(msg);
-              $(".message-warning").slideDown("slow");
-            }
+
+            sLoader.slideUp("slow");
+            $(".message-warning").fadeOut();
+            $("#contactForm").fadeOut();
+            $("#contactForm")[0].reset();
+            $(".message-success").fadeIn();
+            sLoader.slideUp("slow");
+            $("#contactForm").fadeIn();
           },
           error: function () {
             sLoader.slideUp("slow");

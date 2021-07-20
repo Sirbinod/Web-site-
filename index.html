@@ -135,7 +135,7 @@
         <div class="shadow-overlay"></div>
         <div class="home-content">
           <div class="row home-content__main">
-            <h3>Welcome to hell</h3>
+            <h3>Welcome to Pashupati Construction</h3>
 
             <h1>
               We are a creative group <br />
@@ -480,12 +480,12 @@
             <fieldset>
               <div class="form-field">
                 <input
-                  name="contactName"
+                  name="name"
                   type="text"
-                  id="contactName"
+                  id="name"
                   placeholder="Your Name"
                   value=""
-                  minlength="2"
+                  minlength="3"
                   required=""
                   aria-required="true"
                   class="full-width"
@@ -493,9 +493,9 @@
               </div>
               <div class="form-field">
                 <input
-                  name="contactEmail"
+                  name="email"
                   type="email"
-                  id="contactEmail"
+                  id="email"
                   placeholder="Your Email"
                   value=""
                   required=""
@@ -505,9 +505,9 @@
               </div>
               <div class="form-field">
                 <input
-                  name="contactSubject"
+                  name="subject"
                   type="text"
-                  id="contactSubject"
+                  id="subject"
                   placeholder="Subject"
                   value=""
                   class="full-width"
@@ -515,8 +515,8 @@
               </div>
               <div class="form-field">
                 <textarea
-                  name="contactMessage"
-                  id="contactMessage"
+                  name="message"
+                  id="message"
                   placeholder="Your Message"
                   rows="10"
                   cols="50"
@@ -526,7 +526,9 @@
                 ></textarea>
               </div>
               <div class="form-field">
-                <button class="full-width btn--primary">Submit</button>
+                <button class="full-width btn--primary" type="submit">
+                  Submit
+                </button>
                 <div class="submit-loader">
                   <div class="text-loader">Sending...</div>
                   <div class="s-loader">
@@ -566,8 +568,8 @@
             <div class="cinfo">
               <h5>Email Us At</h5>
               <p>
-                contact@glintsite.com<br />
-                info@glintsite.com
+                contact@whatsite.com<br />
+                info@whatsite.com
               </p>
             </div>
 
@@ -597,7 +599,7 @@
       <div class="row footer-main">
         <div class="col-six tab-full left footer-desc">
           <!-- here logo -->
-          <sapn class="logo-footer">Pashupati Construction  </sapn>
+          <sapn class="logo-footer">Pashupati Construction </sapn>
           <div class="footer-logo"></div>
           Proin eget tortor risus. Mauris blandit aliquet elit, eget tincidunt
           nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec,
@@ -904,5 +906,27 @@
         }
       };
     </script>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#contactForm").submit(function (event) {
+          var formData = {
+            contactName: $("#ccontactName").val(),
+            contactEmail: $("#contactEmail").val(),
+            contactSubject: $("#contactSubject").val(),
+            contactMessage: $("#contactMessage").val(),
+          };
+          $.ajax({
+            type: "POST",
+            url: "http://localhost:8000/contact_us/",
+            data: formData,
+            dataType: "json",
+            encode: true,
+          }).done(function (data) {
+            console.log(data);
+          });
+          event.preventDefault();
+        });
+      });
+    </script> -->
   </body>
 </html>
